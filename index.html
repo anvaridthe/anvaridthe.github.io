@@ -71,8 +71,9 @@
   @media (max-width: 40rem) { nav { justify-content: flex-start; gap: 0.9rem; padding-bottom: 2.25rem; } }
 
   /* ---------- hero ---------- */
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 14rem; gap: 3rem; align-items: center; padding-bottom: 3rem; }
-  @media (max-width: 46rem) { .hero { grid-template-columns: 1fr; gap: 2.25rem; } .portrait { order: -1; max-width: 10.5rem; } }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: 2.75rem; align-items: center; padding-bottom: 3rem; }
+  @media (max-width: 52rem) { .hero { grid-template-columns: minmax(0, 1fr) 15rem; gap: 2rem; } }
+  @media (max-width: 46rem) { .hero { grid-template-columns: 1fr; gap: 2.25rem; } .portrait { order: -1; max-width: 17rem; } }
 
   .eyebrow {
     font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
@@ -93,7 +94,9 @@
     font-family: var(--mono); font-size: 0.84rem; font-weight: 600;
     letter-spacing: 0.06em; color: var(--ink); margin: 0 0 1.4rem;
   }
-  .lede { font-size: 1.04rem; color: var(--dim); max-width: 46ch; margin: 0 0 1.9rem; }
+  .lede { font-size: 1.04rem; color: var(--dim); max-width: 48ch; margin: 0 0 0.8rem; }
+  .lede b { color: var(--ink); font-weight: 600; }
+  .lede.sub { font-size: 0.97rem; margin: 0 0 1.9rem; }
 
   .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .btn {
@@ -110,12 +113,22 @@
   }
   .btn.ghost:hover, .btn.ghost:focus-visible { border-color: rgba(255, 255, 255, 0.34); background: rgba(255, 255, 255, 0.08); }
 
+  /* credential strip — gold reads as "certified" and ties to the mind gem */
+  .herocerts { margin-top: 1.7rem; }
+  .hclabel {
+    display: block; margin-bottom: 0.65rem;
+    font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .herocerts .certs { margin: 0; }
+
   .portrait { margin: 0; position: relative; }
+  /* 4:5 matches the source exactly, so nothing is cropped */
   .portrait img, .monogram {
-    display: block; width: 100%; aspect-ratio: 1 / 1.1;
+    display: block; width: 100%; height: auto; aspect-ratio: 4 / 5;
     object-fit: cover; border-radius: 16px;
-    border: 1px solid var(--line);
-    box-shadow: 0 0 46px rgba(168, 85, 247, 0.22), 0 0 90px rgba(59, 155, 246, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 54px rgba(168, 85, 247, 0.30), 0 0 110px rgba(59, 155, 246, 0.16);
   }
   .monogram {
     display: none; align-items: center; justify-content: center;
@@ -264,10 +277,12 @@
 
   .certs { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 1.4rem 0 0; padding: 0; }
   .certs li {
-    font-family: var(--mono); font-size: 0.72rem; color: var(--dim);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--line); border-radius: 7px; padding: 0.24rem 0.6rem;
+    font-family: var(--mono); font-size: 0.75rem; color: #f3dfa0;
+    background: color-mix(in srgb, var(--mind) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mind) 30%, transparent);
+    border-radius: 7px; padding: 0.3rem 0.68rem;
   }
+  .certs li::before { content: "\2713"; color: var(--mind); margin-right: 0.45rem; }
   .moreline { font-family: var(--mono); font-size: 0.79rem; margin: 0; }
 
   .contact-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
@@ -304,18 +319,35 @@
       <h1>Anvar Salvar</h1>
       <p class="role">Senior DevOps Engineer</p>
       <p class="lede">
-        I build the path other engineers&rsquo; code takes to production &mdash;
-        AWS and Kubernetes platforms, Terraform, and delivery tooling that
-        application teams can use without filing a ticket.
+        Six years building AWS infrastructure, Kubernetes platforms and CI/CD
+        automation. I build the shared delivery tooling that <b>18 production
+        services across 7 application teams</b> ship through &mdash; EKS,
+        Terraform, Helm, GitHub Actions and Argo CD.
+      </p>
+      <p class="lede sub">
+        And I build with AI rather than just using it: Claude Code Agent Skills
+        and MCP integrations for infrastructure, deployment validation and
+        troubleshooting.
       </p>
       <div class="actions">
         <a class="btn" href="resume.pdf">R&eacute;sum&eacute; (PDF)</a>
         <a class="btn ghost" href="mailto:anvarsalvaruulu@gmail.com">Email</a>
         <a class="btn ghost" href="https://linkedin.com/in/anvar-salvar">LinkedIn</a>
       </div>
+      <div class="herocerts">
+        <span class="hclabel">Certifications</span>
+        <ul class="certs">
+          <li>AWS Certified Solutions Architect &ndash; Associate</li>
+          <li>HashiCorp Certified: Terraform Associate</li>
+          <li>Certified Kubernetes Administrator (CKA)</li>
+          <li>Certified Kubernetes Application Developer (CKAD)</li>
+        </ul>
+      </div>
     </div>
     <figure class="portrait" id="portrait">
-      <img src="portrait.jpg" alt="Anvar Salvar" id="portrait-img">
+      <img src="hero.jpg" width="688" height="860"
+           alt="Stylised illustration of Anvar Salvar in a cosmic setting, holding a gauntlet set with glowing cloud and Kubernetes tool emblems"
+           id="portrait-img">
       <div class="monogram" aria-hidden="true">AS</div>
     </figure>
   </div>
@@ -545,12 +577,6 @@
 
     <p class="moreline"><a href="resume.pdf">Full r&eacute;sum&eacute; (PDF) &rarr;</a></p>
 
-    <ul class="certs">
-      <li>AWS Solutions Architect &ndash; Associate</li>
-      <li>HashiCorp Terraform Associate</li>
-      <li>CKA</li>
-      <li>CKAD</li>
-    </ul>
   </section>
 
   <!-- ================= contact ================= -->
