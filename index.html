@@ -39,9 +39,9 @@
   :root {
     --void:   #06060d;
     --panel:  rgba(20, 20, 34, 0.62);
-    --ink:    #e9e7f2;
-    --dim:    #a5a1ba;
-    --faint:  #6d6a82;
+    --ink:    #edebf5;
+    --dim:    #bcb8cd;   /* body copy — lifted for contrast on near-black */
+    --faint:  #928ea6;   /* labels — was too dark to read at small sizes */
     --line:   rgba(255, 255, 255, 0.10);
 
     --power:  #a855f7;   /* delivery      */
@@ -64,7 +64,7 @@
     background: var(--void);
     color: var(--ink);
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -100,7 +100,7 @@
   @media (max-width: 46rem) { .hero { grid-template-columns: 1fr; gap: 2.25rem; } .portrait { order: -1; max-width: 17rem; } }
 
   .eyebrow {
-    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--dim); margin: 0 0 1rem;
   }
   h1 {
@@ -118,9 +118,9 @@
     font-family: var(--mono); font-size: 0.84rem; font-weight: 600;
     letter-spacing: 0.06em; color: var(--ink); margin: 0 0 1.4rem;
   }
-  .lede { font-size: 1.04rem; color: var(--dim); max-width: 48ch; margin: 0 0 0.8rem; }
+  .lede { font-size: 1.07rem; color: var(--dim); max-width: 48ch; margin: 0 0 0.8rem; }
   .lede b { color: var(--ink); font-weight: 600; }
-  .lede.sub { font-size: 0.97rem; margin: 0 0 1.9rem; }
+  .lede.sub { font-size: 1.01rem; margin: 0 0 1.9rem; }
 
   .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .btn {
@@ -141,7 +141,7 @@
   .herocerts { margin-top: 1.7rem; }
   .hclabel {
     display: block; margin-bottom: 0.65rem;
-    font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.17em;
+    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--faint);
   }
   .herocerts .certs { margin: 0; }
@@ -172,7 +172,7 @@
     display: inline-flex; align-items: center; gap: 0.5rem;
     text-decoration: none; padding: 0.4rem 0.8rem 0.4rem 0.55rem;
     border: 1px solid var(--line); border-radius: 999px;
-    font-family: var(--mono); font-size: 0.71rem; letter-spacing: 0.07em;
+    font-family: var(--mono); font-size: 0.79rem; letter-spacing: 0.06em;
     color: var(--dim); background: rgba(255, 255, 255, 0.025);
   }
   .rail a:hover, .rail a:focus-visible { color: var(--ink); border-color: color-mix(in srgb, var(--gem) 55%, transparent); }
@@ -202,35 +202,45 @@
   .fhead { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.55rem; }
   .fhead .gem { width: 0.58rem; height: 0.58rem; }
   .kind {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--gem); margin: 0;
+    font-family: var(--mono); font-size: 0.77rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gem); margin: 0; font-weight: 500;
   }
   .facet h3 {
-    font-size: 1.16rem; line-height: 1.32; font-weight: 700;
+    font-size: 1.28rem; line-height: 1.3; font-weight: 700;
     letter-spacing: -0.015em; margin: 0 0 1.1rem; color: var(--ink);
   }
-  .facet p { margin: 0 0 1rem; color: var(--dim); max-width: 66ch; font-size: 0.97rem; }
+  .facet p { margin: 0 0 1rem; color: var(--dim); max-width: 64ch; font-size: 1.03rem; line-height: 1.62; }
   .facet p:last-of-type { margin-bottom: 1.1rem; }
   .facet b { color: var(--ink); font-weight: 600; }
 
-  .stat {
-    display: inline-block;
-    font-family: var(--mono); font-size: 1.32rem; font-weight: 600;
-    color: var(--gem); letter-spacing: -0.01em;
-    text-shadow: 0 0 22px color-mix(in srgb, var(--gem) 55%, transparent);
-    margin: 0 0 0.15rem;
+  /* The payoff, placed before the prose so a skimmer gets it first. */
+  .result { margin: 0 0 0.9rem; }
+  .result .n {
+    display: block;
+    font-family: var(--mono); font-size: 1.62rem; font-weight: 600;
+    line-height: 1.15; letter-spacing: -0.02em; color: var(--gem);
+    text-shadow: 0 0 26px color-mix(in srgb, var(--gem) 48%, transparent);
   }
-  .statl {
-    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--faint); margin: 0 0 1.1rem;
+  .result .l {
+    display: block; margin-top: 0.3rem;
+    font-family: var(--mono); font-size: 0.79rem; letter-spacing: 0.06em;
+    color: var(--dim);
+  }
+  @media (max-width: 40rem) { .result .n { font-size: 1.42rem; } }
+
+  /* section framing above the cards */
+  .worklede { margin: 3.25rem 0 1.4rem; }
+  .worklede p.intro {
+    margin: 0; max-width: 56ch; color: var(--dim);
+    font-size: 1.03rem;
   }
 
   .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; margin: 0; padding: 0; }
   .tags li {
-    font-family: var(--mono); font-size: 0.71rem; color: var(--dim);
+    font-family: var(--mono); font-size: 0.79rem; color: var(--dim);
     border: 1px solid color-mix(in srgb, var(--gem) 26%, transparent);
     background: color-mix(in srgb, var(--gem) 7%, transparent);
-    border-radius: 999px; padding: 0.17rem 0.6rem;
+    border-radius: 999px; padding: 0.24rem 0.68rem;
   }
 
   /* ---------- diagrams ---------- */
@@ -246,27 +256,27 @@
   .s-dash { fill: none; stroke: rgba(255,255,255,0.22); stroke-width: 1; stroke-dasharray: 4 4; }
   .s-line { fill: none; stroke: rgba(255,255,255,0.34); stroke-width: 1.2; }
   .s-acc  { fill: none; stroke: var(--gem); stroke-width: 1.4; }
-  .t   { font-family: var(--mono); font-size: 12.5px; fill: var(--ink); }
-  .t-b { font-family: var(--mono); font-size: 12.5px; font-weight: 600; fill: var(--ink); }
-  .t-s { font-family: var(--mono); font-size: 10.5px; fill: var(--dim); }
-  .t-a { font-family: var(--mono); font-size: 11px; fill: var(--gem); }
+  .t   { font-family: var(--mono); font-size: 13.5px; fill: var(--ink); }
+  .t-b { font-family: var(--mono); font-size: 13.5px; font-weight: 600; fill: var(--ink); }
+  .t-s { font-family: var(--mono); font-size: 12px; fill: var(--dim); }
+  .t-a { font-family: var(--mono); font-size: 12.5px; fill: var(--gem); }
 
   /* ---------- generic sections ---------- */
   section.plain { border-top: 1px solid var(--line); margin-top: 3.25rem; padding-top: 2.5rem; }
   .label {
-    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--faint); margin: 0 0 1.5rem; font-weight: 500;
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 0.6rem; font-weight: 500;
   }
   section.plain > p { max-width: 66ch; color: var(--dim); margin: 0 0 1rem; }
 
   .stackgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.4rem 2rem; }
   .stackgrid h4 {
-    font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.13em;
+    font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--faint); font-weight: 500; margin: 0 0 0.6rem;
   }
   .chips { display: flex; flex-wrap: wrap; gap: 0.33rem; }
   .chips span {
-    font-family: var(--mono); font-size: 0.73rem; color: var(--dim);
+    font-family: var(--mono); font-size: 0.81rem; color: var(--dim);
     background: rgba(255, 255, 255, 0.045);
     border: 1px solid var(--line); border-radius: 7px; padding: 0.19rem 0.5rem;
   }
@@ -295,24 +305,24 @@
     .co .dates { display: block; margin-left: 0; margin-top: 0.1rem; }
   }
   ul.bul { margin: 0 0 2rem; padding: 0 0 0 1.05rem; max-width: 66ch; color: var(--dim); }
-  ul.bul li { margin-bottom: 0.45rem; font-size: 0.94rem; }
+  ul.bul li { margin-bottom: 0.5rem; font-size: 1rem; }
   ul.bul li::marker { color: var(--power); }
   ul.bul b { color: var(--ink); font-weight: 600; }
 
   .certs { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 1.4rem 0 0; padding: 0; }
   .certs li {
-    font-family: var(--mono); font-size: 0.75rem; color: #f3dfa0;
+    font-family: var(--mono); font-size: 0.83rem; color: #f5e4ad;
     background: color-mix(in srgb, var(--mind) 8%, transparent);
     border: 1px solid color-mix(in srgb, var(--mind) 30%, transparent);
     border-radius: 7px; padding: 0.3rem 0.68rem;
   }
   .certs li::before { content: "\2713"; color: var(--mind); margin-right: 0.45rem; }
-  .moreline { font-family: var(--mono); font-size: 0.79rem; margin: 0; }
+  .moreline { font-family: var(--mono); font-size: 0.86rem; margin: 0; }
 
   .contact-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
   footer {
     margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--line);
-    font-family: var(--mono); font-size: 0.7rem; color: var(--faint);
+    font-family: var(--mono); font-size: 0.77rem; color: var(--faint);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
   }
   a { color: #b79bf0; }
@@ -380,20 +390,26 @@
   </div>
 
   <ul class="rail">
-    <li style="--gem: var(--power)"><a href="#delivery"><i class="gem"></i>Delivery</a></li>
-    <li style="--gem: var(--space)"><a href="#infra"><i class="gem"></i>Infrastructure</a></li>
-    <li style="--gem: var(--real)"><a href="#verify"><i class="gem"></i>Verification</a></li>
-    <li style="--gem: var(--soul)"><a href="#reliability"><i class="gem"></i>Reliability</a></li>
-    <li style="--gem: var(--time)"><a href="#scale"><i class="gem"></i>Scale</a></li>
-    <li style="--gem: var(--mind)"><a href="#ai"><i class="gem"></i>Intelligence</a></li>
+    <li style="--gem: var(--power)"><a href="#delivery"><i class="gem"></i>Delivery platform</a></li>
+    <li style="--gem: var(--space)"><a href="#infra"><i class="gem"></i>Self-service infra</a></li>
+    <li style="--gem: var(--real)"><a href="#verify"><i class="gem"></i>Release safety</a></li>
+    <li style="--gem: var(--soul)"><a href="#reliability"><i class="gem"></i>Observability</a></li>
+    <li style="--gem: var(--time)"><a href="#scale"><i class="gem"></i>Cost &amp; capacity</a></li>
+    <li style="--gem: var(--mind)"><a href="#ai"><i class="gem"></i>AI tooling</a></li>
   </ul>
 
   <!-- ================= work ================= -->
+  <div class="worklede">
+    <p class="label">Selected work</p>
+    <p class="intro">Six areas I own on the platform team, and what measurably changed in each.</p>
+  </div>
+
   <div id="work" class="facets">
 
     <!-- POWER -->
     <article class="facet" id="delivery" style="--gem: var(--power)">
-      <div class="fhead"><i class="gem"></i><p class="kind">Delivery</p></div>
+      <div class="fhead"><i class="gem"></i><p class="kind">Delivery platform</p></div>
+      <p class="result"><span class="n">~40% faster</span><span class="l">deployment lead time, merge to production</span></p>
       <h3>One deployment path for 18 services, instead of 18 copies of one</h3>
       <div class="dia">
         <svg viewBox="0 0 640 152" role="img" aria-label="A merge triggers one build and scan, producing a single image digest promoted unchanged through dev, staging and production.">
@@ -418,19 +434,17 @@
         </svg>
       </div>
       <p>
-        Shared delivery tooling for <b>18 production services across 7 application
-        teams</b>. Reworked CI/CD to build the artifact once and promote that same
-        image through every environment, with consistent approval and rollback
-        behaviour across all of them.
+        Shared tooling for <b>18 production services across 7 application teams</b>.
+        Build the artifact once, promote that same image through every environment,
+        with identical approval and rollback behaviour everywhere.
       </p>
-      <span class="stat">~40% faster</span>
-      <p class="statl">deployment lead time</p>
       <ul class="tags"><li>GitHub Actions</li><li>Argo CD</li><li>Helm</li><li>ECR</li><li>OIDC</li></ul>
     </article>
 
     <!-- SPACE -->
     <article class="facet" id="infra" style="--gem: var(--space)">
-      <div class="fhead"><i class="gem"></i><p class="kind">Infrastructure</p></div>
+      <div class="fhead"><i class="gem"></i><p class="kind">Self-service infrastructure</p></div>
+      <p class="result"><span class="n">3 days &rarr; 4 hours</span><span class="l">to stand up a new service</span></p>
       <h3>DNS, TLS and secrets without opening a ticket</h3>
       <div class="dia">
         <svg viewBox="0 0 640 176" role="img" aria-label="Before: three separate tickets for DNS, TLS and secrets taking about three days. After: one pull request declaring the resources, reconciled automatically in under four hours.">
@@ -459,67 +473,57 @@
         </svg>
       </div>
       <p>
-        Replaced manual provisioning with declarative resources the application
-        team owns in its own repo. Standard service setup dropped from about
-        three days across three queues to a single pull request.
+        Three separate ticket queues became one pull request. The application team
+        declares what it needs in its own repo; the platform reconciles it.
       </p>
-      <span class="stat">~3 days &rarr; &lt;4 hours</span>
-      <p class="statl">standard service setup</p>
       <ul class="tags"><li>cert-manager</li><li>ExternalDNS</li><li>Secrets Store CSI</li><li>Gateway API</li><li>Helm</li></ul>
     </article>
 
     <!-- REALITY -->
     <article class="facet" id="verify" style="--gem: var(--real)">
-      <div class="fhead"><i class="gem"></i><p class="kind">Verification</p></div>
+      <div class="fhead"><i class="gem"></i><p class="kind">Release safety</p></div>
+      <p class="result"><span class="n">Caught pre-production</span><span class="l">auth failures &middot; partial rollouts &middot; wrong releases</span></p>
       <h3>A deploy isn&rsquo;t finished because the pipeline went green</h3>
       <p>
-        Added deployment safeguards that catch AWS authentication failures,
-        incomplete rollouts and incorrect releases <b>before they reach
-        production</b> &mdash; rather than after someone notices in the dashboard.
-      </p>
-      <p>
-        The principle underneath all of it: the only trustworthy signal is the
-        one that ties the running workload back to the artifact you actually
-        built. A pipeline that reports success without checking that is
-        measuring the service, not the release.
+        Safeguards that verify the workload actually running matches the artifact
+        you built. A pipeline reporting success without that check is measuring
+        the service, not the release.
       </p>
       <ul class="tags"><li>rollout verification</li><li>digest checks</li><li>OIDC preflight</li><li>rollback automation</li></ul>
     </article>
 
     <!-- SOUL -->
     <article class="facet" id="reliability" style="--gem: var(--soul)">
-      <div class="fhead"><i class="gem"></i><p class="kind">Reliability</p></div>
+      <div class="fhead"><i class="gem"></i><p class="kind">Observability &amp; on-call</p></div>
+      <p class="result"><span class="n">~35% fewer</span><span class="l">non-actionable production alerts</span></p>
       <h3>Fewer pages, without losing the ones that matter</h3>
       <p>
-        Built the Prometheus/Grafana observability baseline with SLO-based alerts
-        and Alertmanager routing. Earlier, at AppsFlyer, I tuned alerting for
-        Kubernetes and Kafka workloads down from <b>~30&ndash;40 pages a week to
-        about 15</b> &mdash; without losing detection of real incidents, which is
-        the only version of that number worth quoting.
+        Prometheus/Grafana baseline with SLO-based alerts and Alertmanager routing.
+        Earlier at AppsFlyer I cut paging from <b>~30&ndash;40 a week to about 15</b>
+        &mdash; without losing detection of real incidents, which is the only
+        version of that number worth quoting.
       </p>
-      <span class="stat">~35% fewer</span>
-      <p class="statl">non-actionable production alerts</p>
       <ul class="tags"><li>Prometheus</li><li>Grafana</li><li>Alertmanager</li><li>SLOs</li><li>production on-call</li></ul>
     </article>
 
     <!-- TIME -->
     <article class="facet" id="scale" style="--gem: var(--time)">
-      <div class="fhead"><i class="gem"></i><p class="kind">Scale</p></div>
+      <div class="fhead"><i class="gem"></i><p class="kind">Cost &amp; capacity</p></div>
+      <p class="result"><span class="n">$18K/month</span><span class="l">EKS worker-node spend removed (~15%)</span></p>
       <h3>Terraform modules, autoscaling, and $18K a month back</h3>
       <p>
-        Reusable Terraform for AWS and EKS environments used by three application
-        teams took new-environment provisioning from <b>~2 days to under 2 hours</b>.
-        Rightsizing and autoscaling across six processing services cut EKS
-        worker-node spend while holding latency and throughput targets.
+        Reusable Terraform took new-environment provisioning from
+        <b>~2 days to under 2 hours</b>. Rightsizing and autoscaling across six
+        processing services cut worker-node spend while holding latency and
+        throughput targets.
       </p>
-      <span class="stat">~$18K/mo (~15%)</span>
-      <p class="statl">EKS worker-node spend removed</p>
       <ul class="tags"><li>Terraform</li><li>EKS</li><li>autoscaling</li><li>Kafka</li><li>capacity</li></ul>
     </article>
 
     <!-- MIND -->
     <article class="facet" id="ai" style="--gem: var(--mind)">
-      <div class="fhead"><i class="gem"></i><p class="kind">Intelligence</p></div>
+      <div class="fhead"><i class="gem"></i><p class="kind">AI tooling</p></div>
+      <p class="result"><span class="n">Human-approved</span><span class="l">every infrastructure change an agent proposes</span></p>
       <h3>Agent Skills and MCP, with the boundary enforced in Kubernetes</h3>
       <div class="dia">
         <svg viewBox="0 0 640 208" role="img" aria-label="Read-only agent tooling runs locally on each engineer workstation. The mutating path is a single deployed service. Both reach the Kubernetes and AWS APIs, where RBAC and quotas are enforced.">
@@ -545,15 +549,11 @@
         </svg>
       </div>
       <p>
-        Claude Code Agent Skills give repeatable Terraform, deployment-validation
-        and troubleshooting workflows a fixed shape instead of an open prompt, and
-        MCP integrations connect the nine-person platform team to GitHub,
-        Kubernetes, AWS and operational tooling.
-      </p>
-      <p>
-        Reads run locally per engineer; anything that changes infrastructure goes
-        through one path, with a person approving the change. <b>The boundary is
-        RBAC and quotas, not wording.</b>
+        Agent Skills give repeatable Terraform, deployment-validation and
+        troubleshooting workflows a fixed shape instead of an open prompt. Reads
+        run locally per engineer; anything that writes goes through one deployed
+        service with a scoped ServiceAccount, RBAC and quotas.
+        <b>The boundary is Kubernetes authorization, not wording in a prompt.</b>
       </p>
       <ul class="tags"><li>Claude Code</li><li>Agent Skills</li><li>MCP</li><li>RBAC</li><li>human-in-the-loop</li></ul>
     </article>
